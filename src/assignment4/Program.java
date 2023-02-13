@@ -17,8 +17,9 @@ public class Program {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        //demonstrating functionality of methods
         System.out.println("q1:");
-        String str = "aabtttt";
+        String str = "aabtttt"; 
         System.out.println(Methods.strsum(str));
         
         System.out.println("q2:");
@@ -46,17 +47,17 @@ public class Program {
         
         int num = 0;
         
-        for (int i = 0; i < str.length(); i++) {
+        for (int i = 0; i < str.length(); i++) {// running through a loop tocount how many separators are in the entered string
             if (str.charAt(i) == ';' || str.charAt(i) == ','||str.charAt(i) == ' '){
                 num ++;
             }
         }
         
-        int[] indexes = new int[num];
+        int[] indexes = new int[num];// creating an array to store the indexes of the separators
         
         num = 0;
         
-        for (int i = 0; i < str.length(); i++) {
+        for (int i = 0; i < str.length(); i++) {// running through the loop again and setting the indexes of the array accordingly
             if (str.charAt(i) == ';' || str.charAt(i) == ','||str.charAt(i) == ' '){
                 indexes[num] = i;
                 num++;
@@ -65,24 +66,25 @@ public class Program {
         
         String []strs = new String[num+1]; 
         
-        if (num!=0){
+        if (num!=0){// setting the first substring
         strs[0] = str.substring(0,indexes[0]);
         }else{
-            strs[0] = str;
+            strs[0] = str;// if therer is only one entry, the first index is set to the string
         }
         
         
-        for (int i = 0; i < indexes.length-1; i++) {
+        for (int i = 0; i < indexes.length-1; i++) {// going through and assigning the separated entries into diffrent indexes
             strs[i+1] = str.substring(indexes[i]+1,indexes[i+1]);
         }
         
-        if (num != 0){
+        if (num != 0){//if there is more than one entry, this sets the last substring
         strs[num] = str.substring(indexes[num-1]+1,str.length());
         }
+        //declairing variables to count the occurences of '_' and "@gmail.com"
         int underscoreNum = 0;
         int gmailNum = 0;
         
-        for (int i = 0; i < strs.length; i++) {
+        for (int i = 0; i < strs.length; i++) {//using the contains method to check if each entry contains '_' or "@gmail.com"
             if (Methods.contains(strs[i], "_")){
                 underscoreNum++;
             }
@@ -91,6 +93,7 @@ public class Program {
             }
         }
         
+        //printing out the result
         System.out.println("in the entered list " + underscoreNum + " entries containd an underscore and " + gmailNum + " entries were assosiated with gmail");
         
         

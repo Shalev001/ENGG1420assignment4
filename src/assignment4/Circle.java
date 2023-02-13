@@ -15,10 +15,14 @@ public class Circle {
     
     private int radius;
     
+    /**
+     * constructor containing the radius attribute
+     * @param radius 
+     */
     public Circle(int radius){
         this.radius = radius;
     }
-    
+    // setter ang getter for radius
     public int getRadius(){
         return radius;
     }
@@ -27,22 +31,37 @@ public class Circle {
         radius = n;
     }
     
+    /**
+     * a method to add the radius of a circle to the current one
+     * 
+     * @param circ the circle with the radius to be added
+     */
     public void add(Circle circ){
         radius += circ.getRadius();
     }
     
+    /**
+     * a method to add the radieye of all the circles in an array
+     * 
+     * @param circs an array containing circles with radieye to add
+     */
     public void addAll(Circle[] circs){
-        for (int i = 0; i < circs.length; i++) {
+        for (int i = 0; i < circs.length; i++) {// for every element in the array add the radius
             radius += circs[i].getRadius();
         }
     }
     
+    /**
+     * a method to decompose a circle
+     * 
+     * @return returns an array containing the decomposed elements of the circle
+     */
     public Circle[] decompose(){
         Circle temp = new Circle(radius); 
         int num = 0;
         int i = 1;
-        while (temp.getRadius() != 1){
-            i++;
+        while (temp.getRadius() != 1){// an initial loop to count how many elements the array of circles needs
+            i++;// incrament i until it the original raduis is divisible by i
             if (temp.getRadius() % i == 0){
                 temp.setRadius(temp.getRadius()/i);
                 num++;
@@ -53,19 +72,19 @@ public class Circle {
         Circle[] circs = new Circle[num];
         num = 0;
         i = 1;
-        while (temp.getRadius() != 1){
+        while (temp.getRadius() != 1){// same loop as before but this time entering the values into the circs array
             i++;
             if (temp.getRadius() % i == 0){
                 temp.setRadius(temp.getRadius()/i);
                 circs[num] = new Circle(i);
-                num++;
+                num++;// this time num keeps track of the current index
                 i = 1;
             }
         }
-        return circs;
+        return circs;// return the populated array
     }
     
-    public static void main(String[] args) {
+    public static void main(String[] args) {// main contianing the operations asked for in the assignment(not run by default, must right click and press run file)
         Circle[] circs = new Circle[100];
         
         for (int i = 0; i < circs.length; i++) {
